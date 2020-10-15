@@ -46,7 +46,7 @@ namespace FANNCSharp.Double
             Console.WriteLine("Final error : " + network.MSE);
 
 
-            string testText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\testFrench.txt"));
+            string testText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\testEnglish.txt"));
 
             double[] testFrequencies = Frequencies(testText);
 
@@ -61,20 +61,20 @@ namespace FANNCSharp.Double
             text = text.Normalize(NormalizationForm.FormD);
             text = new string(text.Where(c => char.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark).ToArray());
 
-            double[] frenchFrequencies = new double[26];
+            double[] frequencies = new double[26];
 
             foreach (char c in text)
             {
-                if (c - 'a' >= 0 && c - 'a' < frenchFrequencies.Length)
-                    frenchFrequencies[c - 'a']++;
+                if (c - 'a' >= 0 && c - 'a' < frequencies.Length)
+                    frequencies[c - 'a']++;
             }
             //System.Console.WriteLine("Frequencies");
-            for (int i = 0; i < frenchFrequencies.Length; i++)
+            for (int i = 0; i < frequencies.Length; i++)
             {
-                frenchFrequencies[i] /= text.Length;
+                frequencies[i] /= text.Length;
                 //System.Console.WriteLine(frenchFrequencies[i]);
             }
-            return frenchFrequencies;
+            return frequencies;
         }
     }
 }
