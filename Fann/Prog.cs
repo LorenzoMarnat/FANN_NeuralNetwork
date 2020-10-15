@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using FANNCSharp;
 using FANNCSharp.Double;
@@ -13,17 +14,17 @@ namespace FANNCSharp.Double
     {
         static void Main(string[] args)
         {
-            string frenchText = System.IO.File.ReadAllText(@"D:\french.txt");
+            string frenchText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\french.txt"));
 
             double[] frenchFrequencies = Frequencies(frenchText);
 
 
-            string englishText = System.IO.File.ReadAllText(@"D:\english.txt");
+            string englishText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\english.txt"));
 
             double[] englishFrequencies = Frequencies(englishText);
 
 
-            string polishText = System.IO.File.ReadAllText(@"D:\polish.txt");
+            string polishText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\polish.txt"));
 
             double[] polishFrequencies = Frequencies(polishText);
 
@@ -32,7 +33,7 @@ namespace FANNCSharp.Double
 
             List<uint> layers = new List<uint>();
             layers.Add(26);
-            layers.Add(4);
+            layers.Add(5);
             layers.Add(3);
 
             NeuralNet network = new NeuralNet(NetworkType.LAYER,layers);
@@ -45,7 +46,7 @@ namespace FANNCSharp.Double
             Console.WriteLine("Final error : " + network.MSE);
 
 
-            string testText = System.IO.File.ReadAllText(@"D:\testEnglish.txt");
+            string testText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\testFrench.txt"));
 
             double[] testFrequencies = Frequencies(testText);
 
