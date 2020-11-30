@@ -14,17 +14,17 @@ namespace FANNCSharp.Double
     {
         static void Main(string[] args)
         {
-            string frenchText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\french.txt"));
+            string frenchText = System.IO.File.ReadAllText(@"E:/french.txt");
 
             double[] frenchFrequencies = Frequencies(frenchText);
 
 
-            string englishText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\english.txt"));
+            string englishText = System.IO.File.ReadAllText(@"E:/english.txt");
 
             double[] englishFrequencies = Frequencies(englishText);
 
 
-            string polishText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\polish.txt"));
+            string polishText = System.IO.File.ReadAllText(@"E:/polish.txt");
 
             double[] polishFrequencies = Frequencies(polishText);
 
@@ -46,7 +46,7 @@ namespace FANNCSharp.Double
             Console.WriteLine("Final error : " + network.MSE);
 
 
-            string testText = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "\\testEnglish.txt"));
+            string testText = System.IO.File.ReadAllText(@"E:/testPolish.txt");
 
             double[] testFrequencies = Frequencies(testText);
 
